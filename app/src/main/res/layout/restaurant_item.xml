@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/restaurant_item_height"
+    android:paddingHorizontal="@dimen/spacing_normal_semi">
+
+    <ImageView
+        android:id="@+id/image_view_logo"
+        android:layout_width="@dimen/image_logo_size"
+        android:layout_height="@dimen/image_logo_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/spacing_normal_semi"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="text_view_name,text_view_type,text_view_address"
+        app:flow_horizontalAlign="start"
+        app:flow_verticalAlign="center"
+        app:flow_verticalStyle="spread"
+        app:flow_wrapMode="none"
+        app:layout_constraintBottom_toBottomOf="@id/image_view_logo"
+        app:layout_constraintStart_toEndOf="@id/image_view_logo"
+        app:layout_constraintTop_toTopOf="@id/image_view_logo" />
+
+    <TextView
+        android:id="@+id/text_view_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        tools:text="Restaurant name" />
+
+    <TextView
+        android:id="@+id/text_view_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="Restaurant type" />
+
+    <TextView
+        android:id="@+id/text_view_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="Restaurant address" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
