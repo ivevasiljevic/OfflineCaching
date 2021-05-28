@@ -1,0 +1,2 @@
+rootProject.name = "OfflineCaching"
+include ':app'
