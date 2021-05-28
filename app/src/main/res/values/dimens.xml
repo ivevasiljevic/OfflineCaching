@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_logo_size">75dp</dimen>
+
+    <dimen name="restaurant_item_height">100dp</dimen>
+
+    <dimen name="spacing_semi">5dp</dimen>
+    <dimen name="spacing_normal">10dp</dimen>
+    <dimen name="spacing_normal_semi">15dp</dimen>
+</resources>
