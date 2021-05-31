@@ -3,8 +3,10 @@ package com.personal.OfflineCaching.features.restaurants
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.personal.OfflineCaching.databinding.ActivityRestaurantBinding
+import com.personal.OfflineCaching.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,8 +28,15 @@ class RestaurantActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.restaurants.observe(this, {
-            restaurantAdapter.submitList(it)
+        viewModel.restaurants.observe(this, { result ->
+            restaurantAdapter.submitList(result.data)
+
+            binding.apply {
+                swipeRefresh.isRefreshing = result is Resource.Loading && result.data.isNullOrEmpty()
+                textViewDataError.isVisible = result is Resource.Error && result.data.isNullOrEmpty()
+
+                textViewDataError.text = result?.message
+            }
         })
     }
 }
