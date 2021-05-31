@@ -1,25 +1,15 @@
 package com.personal.OfflineCaching.features.restaurants
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.personal.OfflineCaching.api.RestaurantApi
 import com.personal.OfflineCaching.data.Restaurant
+import com.personal.OfflineCaching.data.RestaurantRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RestaurantViewModel @Inject constructor(api: RestaurantApi) : ViewModel() {
+class RestaurantViewModel @Inject constructor(private val api: RestaurantApi, private val repo: RestaurantRepository) : ViewModel() {
 
-    private val restaurantsLD = MutableLiveData<List<Restaurant>>()
-    val restaurants: LiveData<List<Restaurant>> = restaurantsLD
-
-    init {
-        viewModelScope.launch {
-            val restaurants = api.getRandomRestaurants()
-            restaurantsLD.value = restaurants
-        }
-    }
+    val restaurants = repo.getRestaurants().asLiveData()
 }
